@@ -1,183 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#234e70">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#761d36">
 <title>Fixkosten</title>
 <style>
-:root{--ink:#203247;--muted:#65758a;--blue:#285b80;--teal:#2b8c86;--coral:#ed8b67;--gold:#efbd59;--bg:#f2f6f8;--card:#fff;--line:#e1e9ee;--soft:#eaf3f7}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:linear-gradient(125deg,#234e70,#2b8c86);color:white;padding:24px 18px 20px;border-radius:0 0 24px 24px}
-header h1{margin:0;font-size:29px;letter-spacing:.2px}header p{margin:6px 0 0;opacity:.9;font-size:14px}
-nav{display:flex;gap:8px;padding:14px 14px 4px;overflow-x:auto}
-nav button{border:0;border-radius:20px;padding:10px 15px;background:#e3edf2;color:#31516a;font-weight:650;white-space:nowrap}
-nav button.active{background:var(--blue);color:#fff}
-main{max-width:850px;margin:auto;padding:12px 14px 40px}
-.panel{display:none}.panel.active{display:block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:16px;margin:10px 0;box-shadow:0 3px 12px #1c3b5010}
-h2{font-size:20px;margin:3px 0 12px}h3{font-size:16px;margin:0 0 10px}
-label{display:block;font-size:13px;color:var(--muted);font-weight:650;margin:10px 0 5px}
-input,select,textarea{width:100%;min-width:0;border:1px solid #cbd8e0;border-radius:10px;background:#fff;padding:11px 10px;font:inherit;color:var(--ink)}
-textarea{min-height:68px;resize:vertical}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.grid .wide{grid-column:1/-1}
-button.primary,button.secondary,button.danger{border:0;border-radius:11px;padding:11px 14px;font-weight:700;font-size:15px;cursor:pointer}
-.primary{background:var(--teal);color:white}.secondary{background:var(--soft);color:var(--blue)}.danger{background:#fff0ed;color:#b64f3d}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{border-radius:15px;padding:14px;background:#eaf3f7}.stat:nth-child(2){background:#e7f4ef}.stat:nth-child(3){background:#fff2e8}.stat:nth-child(4){background:#f3effb}
-.stat small{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:21px;margin-top:5px}
-.item{border-top:1px solid var(--line);padding:12px 0;display:flex;gap:12px;justify-content:space-between;align-items:center}
-.item:first-child{border-top:0}.item .sub{font-size:13px;color:var(--muted);margin-top:3px}.amount{font-weight:750;white-space:nowrap}
-.tag{display:inline-block;background:#edf4f7;color:#41657d;border-radius:20px;padding:3px 8px;font-size:11px;margin-top:5px}
-.empty{color:var(--muted);font-size:14px;padding:12px 0}
-.category-head{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-.category-head strong{font-size:15px}.category-head span{font-weight:750}
-.smallbtn{border:0;background:transparent;color:#b14f40;font-weight:700;padding:7px}
-footer{color:var(--muted);font-size:12px;text-align:center;padding:14px}
-@media(max-width:420px){header{padding:20px 16px 17px}.grid{gap:8px}.card{padding:14px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:19px}}
+:root{--wein:#761d36;--wein2:#982d4b;--orange:#f28a24;--hell:#fff7f1;--text:#35252a;--muted:#79676b;--line:#ead8d5;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:#fffaf7;color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,var(--wein),#9d304c);color:white;padding:22px 18px 18px}header h1{margin:0;font-size:27px}header p{margin:5px 0 0;opacity:.9}
+nav{display:flex;gap:8px;padding:12px;overflow:auto;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2}
+nav button{white-space:nowrap;border:1px solid var(--line);border-radius:22px;background:#fff;padding:10px 14px;color:var(--wein);font-weight:650}
+nav button.active{background:var(--wein);color:#fff;border-color:var(--wein)}
+main{max-width:850px;margin:auto;padding:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 15px;box-shadow:0 3px 12px #5a1b2910}
+h2{font-size:20px;margin:0 0 13px;color:var(--wein)}h3{font-size:16px;margin:16px 0 8px;color:var(--wein)}
+label{display:block;font-weight:650;font-size:14px;margin:11px 0 5px}
+input,select,textarea{font:inherit;width:100%;padding:11px;border:1px solid #d9c5c5;border-radius:10px;background:white;color:var(--text);min-width:0}
+input:focus,select:focus{outline:2px solid #f5b16d;border-color:var(--orange)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}
+button.primary{background:var(--orange);border:0;color:#321b13;border-radius:11px;padding:12px 16px;font-weight:750;margin-top:14px}
+button.secondary{background:#fff;border:1px solid var(--wein);color:var(--wein);border-radius:10px;padding:9px 12px;font-weight:650}
+button.danger{background:#fff0f0;color:#9b2337;border:1px solid #e8b8c0;border-radius:9px;padding:7px 10px}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.months label{display:flex;align-items:center;gap:7px;background:var(--hell);padding:9px;border-radius:9px;margin:0;font-weight:500}
+.months input{width:auto;accent-color:var(--wein)}
+.hint{font-size:13px;color:var(--muted);margin:6px 0}.hidden{display:none!important}
+.card{border:1px solid var(--line);border-radius:12px;padding:12px;margin:9px 0;background:#fff}
+.cardtop{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.amount{font-weight:800;color:var(--wein);white-space:nowrap}
+.pill{display:inline-block;background:#fff0e1;color:#8a4511;border-radius:20px;padding:4px 8px;font-size:12px;margin-top:5px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:var(--hell);padding:13px;border-radius:12px}.stat small{display:block;color:var(--muted)}.stat strong{display:block;color:var(--wein);font-size:20px;margin-top:4px}
+.monthrow{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.monthrow:last-child{border:0}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:20px}
+@media(max-width:430px){main{padding:11px}.panel{padding:13px}.grid{gap:8px}.months{grid-template-columns:repeat(3,1fr)}header{padding:19px 15px}}
 </style>
 </head>
 <body>
-<header><h1>Fixkosten</h1><p>Alles im Blick – einfach und übersichtlich</p></header>
+<header><h1>Fixkosten</h1><p>Alle regelmäßigen Ausgaben im Überblick</p></header>
 <nav>
-<button class="active" data-tab="overview">Übersicht</button>
-<button data-tab="entry">Eintragen</button>
-<button data-tab="special">Katzen &amp; Benzin</button>
-<button data-tab="manage">Rubriken</button>
+<button class="active" data-tab="eingabe">Eintragen</button><button data-tab="liste">Meine Kosten</button><button data-tab="kalender">Jahreskalender</button><button data-tab="sonder">Katzen & Benzin</button><button data-tab="auswertung">Jahresübersicht</button>
 </nav>
 <main>
-<section id="overview" class="panel active">
-<div class="card">
+<section id="eingabe" class="view">
+<div class="panel"><h2 id="formTitle">Neue Fixkosten eintragen</h2>
+<form id="costForm">
 <div class="grid">
-<div><label for="yearView">Jahr</label><select id="yearView"></select></div>
-<div style="display:flex;align-items:end"><button class="secondary" id="exportBtn" style="width:100%">Daten sichern</button></div>
+<div class="full"><label for="rubrik">Rubrik</label><select id="rubrik"></select></div>
+<div class="full"><label for="subcat">Unterkategorie</label><select id="subcat"></select></div>
+<div><label for="betrag">Betrag (€)</label><input id="betrag" type="number" min="0" step="0.01" required placeholder="z. B. 85,00"></div>
+<div><label for="zahlung">Zahlungsweise</label><select id="zahlung"><option>Monatlich</option><option>Vierteljährlich</option><option>Halbjährlich</option><option>Jährlich</option></select></div>
+<div class="full" id="dueWrap"><label>Fälligkeitsmonate</label><div class="hint" id="dueHint">Bitte die passenden Monate auswählen.</div><div class="months" id="months"></div></div>
+<div class="full"><label for="details">Details (optional)</label><input id="details" placeholder="z. B. Vertragsnummer oder Hinweis"></div>
 </div>
-<div class="stats" style="margin-top:14px">
-<div class="stat"><small>Fixkosten im Jahr</small><strong id="yearTotal">0,00 €</strong></div>
-<div class="stat"><small>Durchschnitt pro Monat</small><strong id="monthAverage">0,00 €</strong></div>
-<div class="stat"><small>Erfasste Positionen</small><strong id="entryCount">0</strong></div>
-<div class="stat"><small>Rubriken</small><strong id="categoryCount">0</strong></div>
-</div>
-</div>
-<div class="card"><h2>Jahresübersicht nach Rubrik</h2><div id="categoryTotals"></div></div>
-<div class="card"><h2>Alle Fixkosten</h2><div id="entryList"></div></div>
+<button class="primary" type="submit" id="saveBtn">Kosten speichern</button> <button class="secondary hidden" type="button" id="cancelEdit">Abbrechen</button>
+</form></div>
+<div class="panel"><h2>Eigene Rubrik ergänzen</h2><div class="grid"><div><label for="newRubrik">Neue Rubrik</label><input id="newRubrik" placeholder="z. B. Freizeit"></div><div><label for="newSub">Unterkategorie</label><input id="newSub" placeholder="z. B. Verein"></div></div><button class="secondary" id="addCategory">Rubrik / Unterkategorie hinzufügen</button><p class="hint">Eine neue Unterkategorie wird der ausgewählten Rubrik zugeordnet, sofern eine Rubrik eingetragen ist.</p></div>
 </section>
-
-<section id="entry" class="panel">
-<div class="card">
-<h2>Fixkosten eintragen</h2>
-<form id="entryForm">
-<div class="grid">
-<div class="wide"><label for="frequency">Zahlungsrhythmus</label><select id="frequency" required><option value="Monatlich">Monatlich</option><option value="Vierteljährlich">Vierteljährlich</option><option value="Halbjährlich">Halbjährlich</option><option value="Jährlich">Jährlich</option></select></div>
-<div><label for="category">Rubrik</label><select id="category" required></select></div>
-<div><label for="subcategory">Unterkategorie</label><select id="subcategory" required></select></div>
-<div><label for="amountInput">Betrag (€)</label><input id="amountInput" type="number" min="0" step="0.01" placeholder="z. B. 85,00" required></div>
-<div><label for="dueMonth">Fälligkeitsmonat</label><select id="dueMonth"><option value="1">Januar</option><option value="2">Februar</option><option value="3">März</option><option value="4">April</option><option value="5">Mai</option><option value="6">Juni</option><option value="7">Juli</option><option value="8">August</option><option value="9">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Dezember</option></select></div>
-<div><label for="entryYear">Jahr</label><input id="entryYear" type="number" min="2000" max="2100" required></div>
-<div class="wide"><label for="details">Details (optional)</label><textarea id="details" placeholder="Zum Beispiel Anbieter oder Vertragsnummer"></textarea></div>
-</div>
-<div class="actions"><button class="primary" type="submit">Fixkosten speichern</button><button class="secondary" type="reset">Eingabe leeren</button></div>
-</form>
-</div>
+<section id="liste" class="view hidden"><div class="panel"><h2>Meine Fixkosten</h2><div id="entryList"></div></div></section>
+<section id="kalender" class="view hidden"><div class="panel"><h2>Jahreskalender</h2><label for="calYear">Jahr</label><select id="calYear"></select><div id="calendarList"></div></div></section>
+<section id="sonder" class="view hidden">
+<div class="panel"><h2>Katzen & Benzin</h2><p class="hint">Diese Ausgaben werden getrennt erfasst und nicht in die Fixkosten-Auswertung eingerechnet.</p>
+<form id="extraForm"><div class="grid"><div><label for="extraType">Bereich</label><select id="extraType"><option>Katzen</option><option>Benzin</option></select></div><div><label for="extraYear">Jahr</label><input id="extraYear" type="number" min="2000" max="2100" required></div><div><label for="extraMonth">Monat</label><select id="extraMonth"></select></div><div><label for="extraAmount">Betrag (€)</label><input id="extraAmount" type="number" min="0" step="0.01" required></div><div class="full"><label for="extraDetails">Details</label><input id="extraDetails" placeholder="Weitere Angaben"></div></div><button class="primary">Eintrag speichern</button></form><div id="extraList"></div></div>
 </section>
-
-<section id="special" class="panel">
-<div class="card">
-<h2>Katzen &amp; Benzin</h2>
-<p style="color:var(--muted);font-size:14px;margin-top:-4px">Diese Ausgaben werden separat erfasst und nicht in die Fixkosten-Jahresübersicht eingerechnet.</p>
-<form id="specialForm">
-<div class="grid">
-<div><label for="specialType">Bereich</label><select id="specialType"><option>Katzen</option><option>Benzin</option></select></div>
-<div><label for="specialYear">Jahr</label><input id="specialYear" type="number" min="2000" max="2100" required></div>
-<div><label for="specialMonth">Monat</label><select id="specialMonth"><option value="1">Januar</option><option value="2">Februar</option><option value="3">März</option><option value="4">April</option><option value="5">Mai</option><option value="6">Juni</option><option value="7">Juli</option><option value="8">August</option><option value="9">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Dezember</option></select></div>
-<div><label for="specialAmount">Betrag (€)</label><input id="specialAmount" type="number" min="0" step="0.01" required></div>
-<div class="wide"><label for="specialDetails">Details</label><textarea id="specialDetails" placeholder="Wofür war die Ausgabe?"></textarea></div>
-</div>
-<div class="actions"><button class="primary" type="submit">Ausgabe speichern</button></div>
-</form>
-</div>
-<div class="card"><h2>Separate Ausgaben</h2><div class="grid"><div><label for="specialYearView">Jahr anzeigen</label><select id="specialYearView"></select></div><div><label for="specialFilter">Bereich</label><select id="specialFilter"><option>Alle</option><option>Katzen</option><option>Benzin</option></select></div></div><div id="specialList"></div></div>
-</section>
-
-<section id="manage" class="panel">
-<div class="card">
-<h2>Rubriken verwalten</h2>
-<p style="font-size:14px;color:var(--muted)">Hier kannst du eigene Rubriken und Unterkategorien ergänzen. Vorhandene Einträge bleiben erhalten.</p>
-<label for="newCategory">Neue Rubrik</label><input id="newCategory" placeholder="Name der Rubrik">
-<div class="actions"><button class="primary" id="addCategory">Rubrik hinzufügen</button></div>
-</div>
-<div class="card">
-<h2>Unterkategorie hinzufügen</h2>
-<label for="manageCategory">Rubrik auswählen</label><select id="manageCategory"></select>
-<label for="newSubcategory">Name der Unterkategorie</label><input id="newSubcategory" placeholder="Name der Unterkategorie">
-<div class="actions"><button class="primary" id="addSubcategory">Unterkategorie hinzufügen</button></div>
-</div>
-<div class="card"><h2>Deine Rubriken</h2><div id="manageList"></div></div>
-<div class="card"><h3>Daten wiederherstellen</h3><p style="font-size:13px;color:var(--muted)">Lade eine zuvor gespeicherte Sicherungsdatei wieder in die App.</p><input type="file" id="importFile" accept=".json,application/json"></div>
-</section>
-<footer>Deine Daten werden lokal in diesem Browser auf deinem Gerät gespeichert.</footer>
-</main>
+<section id="auswertung" class="view hidden"><div class="panel"><h2>Jahresübersicht</h2><label for="summaryYear">Jahr</label><select id="summaryYear"></select><div id="summary"></div></div></section>
+</main><footer>Deine Daten bleiben in diesem Browser gespeichert. Über „Daten sichern“ kannst du eine Sicherung herunterladen.</footer>
 <script>
-const DEFAULT_CATS={
- "Wohnen":["Miete","Strom","Gas","Handy","Rundfunkgebühr"],
- "Versicherungen":["Privathaftpflicht","Unfall/Alltagshilfe","Rechtsschutz","Hausrat","Private Krankenversicherung"],
- "Auto":["ADAC","Kfz Steuer","Kfz Versicherung","Inspektion","Reifenwechsel"]
-};
-const MONTHS=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
-const KEY="fixkosten_app_v1";
-let data=load();
-function load(){try{let d=JSON.parse(localStorage.getItem(KEY));if(d&&d.categories&&Array.isArray(d.entries)&&Array.isArray(d.special))return d}catch(e){}return {categories:structuredClone(DEFAULT_CATS),entries:[],special:[]}}
+const M=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const DEFAULT={'Wohnen':['Miete','Strom','Gas','Handy','Rundfunkgebühr'],'Versicherungen':['Privathaftpflicht','Unfall/Alltagshilfe','Rechtsschutz','Hausrat','Private Krankenversicherung'],'Auto':['ADAC','Kfz Steuer','Kfz Versicherung','Inspektion','Reifenwechsel']};
+const KEY='fixkostenAppData';
+let data={categories:DEFAULT,entries:[],extras:[]},editing=null;
+const $=id=>document.getElementById(id);
+const euro=n=>Number(n||0).toLocaleString('de-DE',{style:'currency',currency:'EUR'});
+function load(){try{const old=JSON.parse(localStorage.getItem(KEY)||'null');if(old){data={...data,...old};data.categories={...DEFAULT,...(old.categories||{})};data.entries=(old.entries||[]).map(e=>{if(!e.months){let m=Number(e.month||1)-1,n={'Monatlich':12,'Vierteljährlich':4,'Halbjährlich':2,'Jährlich':1}[e.frequency||e.zahlung]||1;e.months=n===12?[]:Array.from({length:n},(_,i)=>(m+(i*(12/n)))%12)}return {...e,frequency:e.frequency||e.zahlung||'Monatlich',months:e.months||[]}});data.extras=old.extras||[]}}catch(e){}}
 function save(){localStorage.setItem(KEY,JSON.stringify(data))}
-function money(n){return Number(n||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
-function annualFactor(f){return f==="Monatlich"?12:f==="Vierteljährlich"?4:f==="Halbjährlich"?2:1}
-function annualValue(e){return Number(e.amount)*annualFactor(e.frequency)}
-function el(id){return document.getElementById(id)}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function fillCategorySelects(){
- const names=Object.keys(data.categories);
- ["category","manageCategory"].forEach(id=>{let s=el(id),old=s.value;s.innerHTML=names.map(n=>`<option>${esc(n)}</option>`).join("");if(names.includes(old))s.value=old});
- updateSubcats();
-}
-function updateSubcats(){let c=el("category").value;el("subcategory").innerHTML=(data.categories[c]||[]).map(x=>`<option>${esc(x)}</option>`).join("")}
-function fillYears(){
- let years=new Set([new Date().getFullYear(),...data.entries.map(x=>+x.year),...data.special.map(x=>+x.year)]);
- let sorted=[...years].filter(Boolean).sort((a,b)=>b-a);
- ["yearView","specialYearView"].forEach(id=>{let s=el(id),old=s.value;s.innerHTML=sorted.map(y=>`<option value="${y}">${y}</option>`).join("");if(sorted.includes(+old))s.value=old});
- el("entryYear").value ||= new Date().getFullYear();el("specialYear").value ||= new Date().getFullYear();
-}
-function renderOverview(){
- let y=+el("yearView").value||new Date().getFullYear(),list=data.entries.filter(e=>+e.year===y);
- let total=list.reduce((s,e)=>s+annualValue(e),0);
- el("yearTotal").textContent=money(total);el("monthAverage").textContent=money(total/12);
- el("entryCount").textContent=list.length;el("categoryCount").textContent=Object.keys(data.categories).length;
- let cats=Object.keys(data.categories).map(c=>({name:c,total:list.filter(e=>e.category===c).reduce((s,e)=>s+annualValue(e),0)}));
- let extras=[...new Set(list.map(e=>e.category))].filter(c=>!data.categories[c]).map(c=>({name:c,total:list.filter(e=>e.category===c).reduce((s,e)=>s+annualValue(e),0)}));
- el("categoryTotals").innerHTML=[...cats,...extras].map(c=>`<div class="category-head"><strong>${esc(c.name)}</strong><span>${money(c.total)}</span></div>`).join("")||'<div class="empty">Noch keine Rubriken vorhanden.</div>';
- el("entryList").innerHTML=list.length?list.slice().sort((a,b)=>a.category.localeCompare(b.category)||a.subcategory.localeCompare(b.subcategory)).map(e=>`<div class="item"><div><strong>${esc(e.subcategory)}</strong><div class="sub">${esc(e.category)} · ${esc(e.frequency)} · ${MONTHS[e.month-1]||""}</div><div class="tag">${money(e.amount)} je Zahlung · ${money(annualValue(e))} im Jahr</div>${e.details?`<div class="sub">${esc(e.details)}</div>`:""}</div><div style="text-align:right"><div class="amount">${money(annualValue(e))}</div><button class="smallbtn" onclick="deleteEntry('${e.id}')">Löschen</button></div></div>`).join(""):'<div class="empty">Für dieses Jahr sind noch keine Fixkosten eingetragen.</div>';
-}
-function renderSpecial(){
- let y=+el("specialYearView").value||new Date().getFullYear(),f=el("specialFilter").value;
- let list=data.special.filter(e=>+e.year===y&&(f==="Alle"||e.type===f));
- el("specialList").innerHTML=list.length?list.slice().sort((a,b)=>a.month-b.month).map(e=>`<div class="item"><div><strong>${esc(e.type)} – ${MONTHS[e.month-1]}</strong><div class="sub">${esc(e.details||"Keine Details")}</div></div><div style="text-align:right"><div class="amount">${money(e.amount)}</div><button class="smallbtn" onclick="deleteSpecial('${e.id}')">Löschen</button></div></div>`).join(""):'<div class="empty">Keine separaten Ausgaben für diese Auswahl.</div>';
-}
-function renderManage(){
- el("manageList").innerHTML=Object.entries(data.categories).map(([c,subs])=>`<div style="padding:12px 0;border-top:1px solid var(--line)"><strong>${esc(c)}</strong><div class="sub">${subs.map(esc).join(" · ")||"Noch keine Unterkategorien"}</div></div>`).join("");
-}
-function refresh(){fillYears();fillCategorySelects();renderOverview();renderSpecial();renderManage()}
-el("category").addEventListener("change",updateSubcats);
-el("entryForm").addEventListener("submit",e=>{e.preventDefault();let amount=+el("amountInput").value;if(!(amount>=0))return;data.entries.push({id:crypto.randomUUID(),frequency:el("frequency").value,category:el("category").value,subcategory:el("subcategory").value,amount,month:+el("dueMonth").value,year:+el("entryYear").value,details:el("details").value.trim()});save();e.target.reset();el("entryYear").value=new Date().getFullYear();refresh();switchTab("overview")});
-el("specialForm").addEventListener("submit",e=>{e.preventDefault();data.special.push({id:crypto.randomUUID(),type:el("specialType").value,year:+el("specialYear").value,month:+el("specialMonth").value,amount:+el("specialAmount").value,details:el("specialDetails").value.trim()});save();e.target.reset();el("specialYear").value=new Date().getFullYear();refresh()});
-window.deleteEntry=id=>{if(confirm("Diesen Fixkosten-Eintrag wirklich löschen?")){data.entries=data.entries.filter(e=>e.id!==id);save();refresh()}};
-window.deleteSpecial=id=>{if(confirm("Diese Ausgabe wirklich löschen?")){data.special=data.special.filter(e=>e.id!==id);save();refresh()}};
-el("addCategory").onclick=()=>{let n=el("newCategory").value.trim();if(!n)return alert("Bitte einen Namen eingeben.");if(data.categories[n])return alert("Diese Rubrik gibt es bereits.");data.categories[n]=[];el("newCategory").value="";save();refresh()};
-el("addSubcategory").onclick=()=>{let c=el("manageCategory").value,n=el("newSubcategory").value.trim();if(!n)return alert("Bitte einen Namen eingeben.");if(data.categories[c].includes(n))return alert("Diese Unterkategorie gibt es bereits.");data.categories[c].push(n);el("newSubcategory").value="";save();refresh()};
-el("yearView").onchange=renderOverview;el("specialYearView").onchange=renderSpecial;el("specialFilter").onchange=renderSpecial;
-function switchTab(id){document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));window.scrollTo(0,0)}
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
-el("exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Fixkosten-Datensicherung.json";a.click();URL.revokeObjectURL(url)};
-el("importFile").onchange=async e=>{let file=e.target.files[0];if(!file)return;try{let d=JSON.parse(await file.text());if(!d.categories||!Array.isArray(d.entries)||!Array.isArray(d.special))throw Error();if(confirm("Vorhandene Daten durch die Sicherung ersetzen?")){data=d;save();refresh();alert("Daten wurden wiederhergestellt.")}}catch(err){alert("Die Datei konnte nicht gelesen werden.")}e.target.value=""};
-refresh();
+function freq(e){return e.frequency||'Monatlich'}
+function count(f){return {'Monatlich':12,'Vierteljährlich':4,'Halbjährlich':2,'Jährlich':1}[f]}
+function monthsFor(e){return freq(e)==='Monatlich'?M.map((_,i)=>i):(e.months||[])}
+function annual(e){return Number(e.amount)*count(freq(e))}
+function setup(){load();fillCategories();$('extraYear').value=new Date().getFullYear();M.forEach((m,i)=>{$('extraMonth').add(new Option(m,m))});let y=new Date().getFullYear();[...Array(8)].forEach((_,i)=>{let yr=y-2+i;$('calYear').add(new Option(yr,yr));$('summaryYear').add(new Option(yr,yr))});$('calYear').value=y;$('summaryYear').value=y;renderMonths();renderAll()}
+function fillCategories(){let r=$('rubrik');r.innerHTML='';Object.keys(data.categories).forEach(k=>r.add(new Option(k,k)));fillSubs()}
+function fillSubs(){let s=$('subcat');s.innerHTML='';(data.categories[$('rubrik').value]||[]).forEach(k=>s.add(new Option(k,k)))}
+$('rubrik').addEventListener('change',fillSubs);
+function renderMonths(selected=[]){let f=$('zahlung').value,n=count(f),wrap=$('dueWrap');wrap.classList.toggle('hidden',f==='Monatlich');$('dueHint').textContent=`Bitte genau ${n} ${n===1?'Monat':'Monate'} auswählen.`;$('months').innerHTML='';M.forEach((m,i)=>{let l=document.createElement('label'),c=document.createElement('input');c.type='checkbox';c.value=i;c.checked=selected.includes(i);c.addEventListener('change',()=>{let checked=[...$('months').querySelectorAll('input:checked')];if(checked.length>n){c.checked=false;alert(`Bitte höchstens ${n} Monate auswählen.`)} });l.append(c,document.createTextNode(m));$('months').append(l)})}
+$('zahlung').addEventListener('change',()=>renderMonths());
+function selectedMonths(){return [...$('months').querySelectorAll('input:checked')].map(x=>Number(x.value))}
+$('costForm').addEventListener('submit',ev=>{ev.preventDefault();let f=$('zahlung').value,ms=selectedMonths(),n=count(f);if(f!=='Monatlich'&&ms.length!==n){alert(`Bitte genau ${n} Fälligkeitsmonate auswählen.`);return}let entry={id:editing||Date.now(),category:$('rubrik').value,subcategory:$('subcat').value,amount:Number($('betrag').value),frequency:f,months:f==='Monatlich'?[]:ms,details:$('details').value};if(editing){data.entries=data.entries.map(e=>e.id===editing?entry:e)}else data.entries.push(entry);editing=null;save();$('costForm').reset();$('formTitle').textContent='Neue Fixkosten eintragen';$('saveBtn').textContent='Kosten speichern';$('cancelEdit').classList.add('hidden');renderMonths();renderAll();alert('Eintrag gespeichert.')});
+$('cancelEdit').onclick=()=>{editing=null;$('costForm').reset();$('formTitle').textContent='Neue Fixkosten eintragen';$('saveBtn').textContent='Kosten speichern';$('cancelEdit').classList.add('hidden');renderMonths()};
+$('addCategory').onclick=()=>{let r=$('newRubrik').value.trim(),s=$('newSub').value.trim();if(!r){alert('Bitte eine Rubrik eintragen.');return}if(!data.categories[r])data.categories[r]=[];if(s&&!data.categories[r].includes(s))data.categories[r].push(s);save();fillCategories();$('rubrik').value=r;fillSubs();$('newRubrik').value='';$('newSub').value='';alert('Rubrik ergänzt.')};
+function editEntry(id){let e=data.entries.find(x=>x.id===id);if(!e)return;editing=id;$('rubrik').value=e.category;fillSubs();$('subcat').value=e.subcategory;$('betrag').value=e.amount;$('zahlung').value=freq(e);$('details').value=e.details||'';renderMonths(e.months||[]);$('formTitle').textContent='Fixkosten bearbeiten';$('saveBtn').textContent='Änderungen speichern';$('cancelEdit').classList.remove('hidden');showTab('eingabe');window.scrollTo(0,0)}
+function deleteEntry(id){if(confirm('Diesen Eintrag wirklich löschen?')){data.entries=data.entries.filter(e=>e.id!==id);save();renderAll()}}
+function renderEntries(){let el=$('entryList');el.innerHTML='';if(!data.entries.length){el.textContent='Noch keine Fixkosten eingetragen.';return}data.entries.forEach(e=>{let d=document.createElement('div');d.className='card';let due=freq(e)==='Monatlich'?'jeden Monat':monthsFor(e).map(i=>M[i]).join(', ');d.innerHTML=`<div class="cardtop"><div><b>${esc(e.category)} · ${esc(e.subcategory)}</b><div class="pill">${esc(freq(e))} · ${esc(due)}</div><div class="hint">${esc(e.details||'')}</div></div><div class="amount">${euro(e.amount)}</div></div><div class="hint">Jährlich: ${euro(annual(e))}</div><button class="secondary" onclick="editEntry(${e.id})">Bearbeiten</button> <button class="danger" onclick="deleteEntry(${e.id})">Löschen</button>`;el.append(d)})}
+function renderCalendar(){let y=Number($('calYear').value),el=$('calendarList');el.innerHTML='';M.forEach((m,i)=>{let due=data.entries.filter(e=>monthsFor(e).includes(i)),sum=due.reduce((a,e)=>a+Number(e.amount),0),section=document.createElement('div');section.className='card';let rows=due.map(e=>`<div class="monthrow"><span>${esc(e.category)} · ${esc(e.subcategory)}</span><b>${euro(e.amount)}</b></div>`).join('');section.innerHTML=`<div class="cardtop"><b>${m} ${y}</b><b class="amount">${euro(sum)}</b></div>${rows||'<p class="hint">Keine Fälligkeiten</p>'}`;el.append(section)})}
+function renderSummary(){let y=Number($('summaryYear').value),groups={},total=0;data.entries.forEach(e=>{let v=annual(e);groups[e.category]=(groups[e.category]||0)+v;total+=v});let el=$('summary');el.innerHTML=`<div class="stats"><div class="stat"><small>Fixkosten pro Jahr</small><strong>${euro(total)}</strong></div><div class="stat"><small>Durchschnitt pro Monat</small><strong>${euro(total/12)}</strong></div></div><h3>Nach Rubrik</h3>`+Object.entries(groups).sort((a,b)=>a[0].localeCompare(b[0])).map(([k,v])=>`<div class="monthrow"><span>${esc(k)}</span><b>${euro(v)}</b></div>`).join('')+(!Object.keys(groups).length?'<p class="hint">Noch keine Daten vorhanden.</p>':'')}
+function renderExtras(){let el=$('extraList');el.innerHTML='<h3>Erfasste Ausgaben</h3>';data.extras.forEach((e,i)=>{let d=document.createElement('div');d.className='monthrow';d.innerHTML=`<span>${esc(e.type)} · ${esc(e.month)} ${e.year}<div class="hint">${esc(e.details||'')}</div></span><b>${euro(e.amount)} <button class="danger" onclick="deleteExtra(${i})">×</button></b>`;el.append(d)})}
+$('extraForm').onsubmit=e=>{e.preventDefault();data.extras.push({type:$('extraType').value,year:Number($('extraYear').value),month:$('extraMonth').value,amount:Number($('extraAmount').value),details:$('extraDetails').value});save();$('extraForm').reset();$('extraYear').value=new Date().getFullYear();renderExtras()};
+function deleteExtra(i){data.extras.splice(i,1);save();renderExtras()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderAll(){renderEntries();renderCalendar();renderSummary();renderExtras()}
+function showTab(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('hidden',v.id!==id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id))}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+$('calYear').onchange=renderCalendar;$('summaryYear').onchange=renderSummary;
+setup();
 </script>
 </body></html>
